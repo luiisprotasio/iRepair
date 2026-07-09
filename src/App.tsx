@@ -1,7 +1,12 @@
-export function App() {
+import { useState } from "react";
+import "./App.css";
+import { Header } from "./components/Header.tsx";
+function App() {
   return (
-    <h1 className="text-3xl font-bold underline">
-      Hello world!
-    </h1>
+    <div className="bg-radial from-[#133036] to-[#0a181b] min-h-screen">
+    <Header />
+  
+    </div>
   )
 }
+export default App;
