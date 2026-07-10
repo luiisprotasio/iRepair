@@ -6,6 +6,18 @@ export function NewOrderForm() {
   const [model, setModel]=useState("");
   const [problem,setProblem]=useState("");
   const [date, setDate]=useState("");
+  function createOrder(){
+    const newSO: ServiceOrder = {
+      id:Math.floor(Math.random()*10000),
+      client:name,
+      model:model,
+      problem:problem,
+      date:date,
+      status:false
+
+    }
+    console.log("Objeto criado com sucesso:", newSO);
+  }
   return(
 <div className=" ml-10 w-20/100">
     <h1 className="m-8 text-3xl text-white">Nova Ordem</h1>
@@ -18,7 +30,7 @@ export function NewOrderForm() {
       <input onChange={(e) => setProblem(e.target.value)} value={problem} type="text" name="Problema" placeholder = "Problema" id="problemInput" className="rounded-lg bg-[#19373e] w-80/100 h-10/100 ml-10 mb-5  border border-[#3a5d65] text-white p-2" />
       <h2 className="ml-10 text-xl text-white">Prazo da ordem</h2>
        <input onChange={(e) => setDate(e.target.value)} value={date} type="date" name="Prazo" placeholder = "Prazo da Ordem" id="dateInput" className="rounded-lg bg-[#19373e] h-10/100 ml-10 mb-5 border border-[#3a5d65] text-white p-2" />
-       <button id="saveButton"className="rounded-lg bg-[#19373e] h-10/100 ml-10 mb-5 border border-[#3a5d65] text-white p-2">Salvar</button>
+       <button onClick={createOrder} id="saveButton"className="rounded-lg bg-[#19373e] h-10/100 ml-10 mb-5 border border-[#3a5d65] text-white p-2">Salvar</button>
     </div>
 </div>
 )
