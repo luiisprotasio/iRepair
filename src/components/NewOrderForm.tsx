@@ -1,7 +1,10 @@
 import "../App.css";
 import { useState } from "react";
 import type { ServiceOrder } from "../types/ServiceOrders";
-export function NewOrderForm() {
+interface NewOrderFormProps {
+  onAddOrder: (newSO: ServiceOrder) => void;
+}
+export function NewOrderForm({ onAddOrder }: NewOrderFormProps) {
   const [name, setName]=useState("");
   const [model, setModel]=useState("");
   const [problem,setProblem]=useState("");
@@ -16,7 +19,7 @@ export function NewOrderForm() {
       status:false
 
     }
-    console.log("Objeto criado com sucesso:", newSO);
+    onAddOrder(newSO);
   }
   return(
 <div className=" ml-10 w-20/100">
