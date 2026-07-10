@@ -14,7 +14,6 @@ function App() {
       <div className="flex justify-start">
           <CardList />
           <NewOrderForm />
-          <OrderCard />
       </div>
     </div>
   )
