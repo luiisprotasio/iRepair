@@ -20,16 +20,19 @@ function App() {
  });
   setOrders(updatedOrders);
 }
-
+function deleteOrder(id: number) {
+  const updatedOrders = orders.filter(order => order.id !== id);
+  setOrders(updatedOrders);
+}
  
   return (
     <div className="bg-radial from-[#133036] to-[#0a181b] min-h-screen">
       <Header />
       <div className="flex justify-start">
-          <CardList orders={orders} onToggleStatus={toggleStatus} />
+          <CardList orders={orders} onToggleStatus={toggleStatus} onDeleteOrder={deleteOrder} />
           <NewOrderForm onAddOrder={handleAddOrder} />
       </div>
     </div>
   )
 }
-export default App;
+export default App; 
