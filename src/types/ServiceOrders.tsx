@@ -1,4 +1,4 @@
-export interface OrderService{
+export interface ServiceOrder{
  id:number;
  client:string;
  model:string;
