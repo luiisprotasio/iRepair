@@ -3,6 +3,6 @@ export interface ServiceOrder{
  client:string;
  model:string;
  problem:string;
- date: Date;
+ date: string;
  status: boolean;
 }
