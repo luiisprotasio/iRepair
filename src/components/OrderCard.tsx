@@ -25,7 +25,9 @@
 
     <div className={`border ${order.status ? "border-[#653a3a]" : "border-[#25421d]"} rounded-lg text-white text-sm h-20/100 overflow-x-auto overflow-y-auto`}>
         <h2>Prazo de entrega:</h2>
-        <time id="cardTime" dateTime={order.date}></time>
+        <time id="cardTime" dateTime={order.date}>
+    {order.date.split("-").reverse().join("/")}
+  </time>
     </div>
 
     <div className="text-white"> 
