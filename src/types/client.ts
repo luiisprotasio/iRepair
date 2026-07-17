@@ -3,6 +3,6 @@ export interface Client {
   name: string;
   phone: string;
   email: string;
-  date: string;
+  created_at: string;
 }
 export type CreateClientData = Omit<Client, 'id' | 'date'>;
