@@ -29,7 +29,7 @@ function deleteOrder(id: number) {
     <div className="bg-radial from-[#133036] to-[#0a181b] min-h-screen">
       <Header />
       <div className="flex justify-start">
-          <CardList orders={orders} onToggleStatus={toggleStatus} onDeleteOrder={deleteOrder} />
+          <CardList orders={orders} onChangeStatus={changeStatus} onDeleteOrder={deleteOrder} />
           <NewOrderForm onAddOrder={handleAddOrder} />
       </div>
     </div>
