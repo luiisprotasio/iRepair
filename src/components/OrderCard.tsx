@@ -1,7 +1,5 @@
     import "../App.css";
     import type { ServiceOrder, ServiceOrderStatus } from "../types/serviceOrders";
-    import type { Client } from "../types";
-    import { useState } from "react";
     interface OrderCardProps{
         order: ServiceOrder;
         name: string;
