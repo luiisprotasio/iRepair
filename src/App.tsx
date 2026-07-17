@@ -3,7 +3,7 @@ import "./App.css";
 import { Header } from "./components/Header.tsx";
 import { CardList } from "./components/CardList.tsx";
 import { NewOrderForm } from "./components/NewOrderForm.tsx";
-import type { ServiceOrder } from "./types/serviceOrders.ts";
+import type { ServiceOrder, ServiceOrderStatus } from "./types/serviceOrders.ts";
 import { OrderCard } from "./components/OrderCard.tsx";
 
 function App() {
@@ -11,10 +11,10 @@ function App() {
  function handleAddOrder(newSO: ServiceOrder) {
   setOrders([...orders, newSO]);
 }
- function toggleStatus(id:number){
+ function changeStatus(id:number, value:ServiceOrderStatus){
   const updatedOrders = orders.map(order => {
     if (order.id === id) {
-      return { ...order, status: !order.status };
+      return { ...order, status: value};
     } else {
     return order;}
  });
