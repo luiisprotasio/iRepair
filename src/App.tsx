@@ -1,12 +1,22 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./App.css";
 import { Header } from "./components/Header.tsx";
 import { CardList } from "./components/CardList.tsx";
 import { NewOrderForm } from "./components/NewOrderForm.tsx";
 import type { ServiceOrder, ServiceOrderStatus } from "./types/serviceOrders.ts";
+import type { Client } from "./types/client.ts";
+import { getAllClients } from "./services/clientService.ts";
 import { OrderCard } from "./components/OrderCard.tsx";
 
 function App() {
+ const [clients,setClients]=useState<Client[]>([]);
+ useEffect(() => {
+    async function load() {
+      const data = await getAllClients();
+      setClients(data);
+    }
+    load();
+  }, []);
  const [orders,setOrders]= useState<ServiceOrder[]>([]);
  function handleAddOrder(newSO: ServiceOrder) {
   setOrders([...orders, newSO]);
@@ -29,8 +39,8 @@ function deleteOrder(id: number) {
     <div className="bg-radial from-[#133036] to-[#0a181b] min-h-screen">
       <Header />
       <div className="flex justify-start">
-          <CardList orders={orders} onChangeStatus={changeStatus} onDeleteOrder={deleteOrder} />
-          <NewOrderForm onAddOrder={handleAddOrder} />
+          <CardList orders={orders} onChangeStatus={changeStatus} clients={clients} onDeleteOrder={deleteOrder} />
+          <NewOrderForm clients = {clients} onAddOrder={handleAddOrder} />
       </div>
     </div>
   )

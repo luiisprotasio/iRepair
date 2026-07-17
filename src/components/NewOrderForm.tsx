@@ -4,18 +4,10 @@ import type { ServiceOrder } from "../types/serviceOrders";
 import type { Client } from "../types";
 import { getAllClients } from "../services/clientService";
 interface NewOrderFormProps {
+  clients: Client[];
   onAddOrder: (newSO: ServiceOrder) => void;
 }
-export function NewOrderForm({ onAddOrder }: NewOrderFormProps) {
-  const [clients, setClients] = useState<Client[]>([]);
-  useEffect(() => {
-    async function load() {
-      const data = await getAllClients();
-      setClients(data);
-    }
-    load();
-  }, []);
-  
+export function NewOrderForm({ onAddOrder, clients }: NewOrderFormProps) {
   const [cid, setCid]=useState(0);
   const [model, setModel]=useState("");
   const [problem,setProblem]=useState("");
