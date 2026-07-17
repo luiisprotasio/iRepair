@@ -8,23 +8,23 @@
     }
     export function OrderCard({ order, name, onChangeStatus ,onDeleteOrder}: OrderCardProps){
         return (
-           <div className={`m-3 flex-col justify-start rounded-3xl ${order.status!='done' ? "bg-[#553537]" : "bg-[#6f9265]"}/70 border ${order.status !='done'? "border-[#653a3a]" : "border-[#25421d]"} w-56 h-75 p-2`}>
-    <div className={`border ${order.status !='done'? "border-[#653a3a]" : "border-[#25421d]"} rounded-lg text-white text-sm h-18/100 overflow-x-auto overflow-y-auto`}>
+           <div className={`m-3 flex-col justify-start rounded-3xl ${order.status!='done' ? "bg-[#6b3d40]" : "bg-[#6f9265]/30"} border border-4 ${order.status !='done'? "border-[#360303]" : "border-[#142e0d]"} w-56 h-75 p-2`}>
+    <div className={`border ${order.status !='done'? "border-[#360303]" : "border-[#142e0d]"} border-2 rounded-lg text-white text-sm h-18/100 overflow-x-auto overflow-y-auto`}>
         <h2>Cliente:</h2>
         <h3 id="clientName">{name}</h3>
     </div>
     
-    <div className={`border ${order.status !='done'? "border-[#653a3a]" : "border-[#25421d]"} rounded-lg text-white text-sm h-18/100 overflow-x-auto overflow-y-auto`}>
+    <div className={`border ${order.status !='done'? "border-[#360303]" : "border-[#142e0d]"} border-2 rounded-lg text-white text-sm h-18/100 overflow-x-auto overflow-y-auto`}>
         <h2>Modelo:</h2>
         <h3 id="deviceName">{order.device}</h3>
     </div>
 
-    <div className={`border ${order.status !='done'? "border-[#653a3a]" : "border-[#25421d]"} rounded-lg text-white text-sm h-27/100 overflow-x-auto overflow-y-scroll`}>
+    <div className={`border ${order.status !='done'? "border-[#360303]" : "border-[#142e0d]"} border-2 rounded-lg text-white text-sm h-27/100 overflow-x-auto overflow-y-scroll`}>
         <h2>Descrição do problema:</h2>
         <h3 id="problemDesc">{order.issue}</h3>
     </div>
 
-    <div className={`border ${order.status !='done'? "border-[#653a3a]" : "border-[#25421d]"} rounded-lg text-white text-sm h-18/100 overflow-x-auto overflow-y-auto`}>
+    <div className={`border ${order.status !='done'? "border-[#360303]" : "border-[#142e0d]"} border-2 rounded-lg text-white text-sm h-18/100 overflow-x-auto overflow-y-auto`}>
         <h2>Criado em:</h2>
         <h4 id="cardTime">{order.created_at}
   </h4>
