@@ -41,7 +41,7 @@
         </select>
     </div>
     <div className=" flex justify-start text-white">
-<button onClick={() => onDeleteOrder(order.id)} className="ml-1 p-1 bg-red-500 border border-red-950 h-7 rounded-xl">Excluir</button>
+<button onClick={() => onDeleteOrder(order.id)} className="ml-1 p-1 text-center flex-col align-center text-black bg-white border border-red-950 h-7 rounded-xl hover:text-white hover:bg-red-500">Excluir</button>
      </div>
 </div>
         )
