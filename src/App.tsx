@@ -4,6 +4,9 @@ import type { ServiceOrder, ServiceOrderStatus } from "./types/serviceOrders.ts"
 import type { Client } from "./types/client.ts";
 import { getAllClients } from "./services/clientService.ts";
 import { Dashboard } from "./pages/Dashboard.tsx";
+import { BrowserRouter, Routes, Route } from 'react-router';
+import { ClientsPage } from './pages/ClientsPage';
+import { ServiceOrders } from './pages/ServiceOrders';
 
 function App() {
  const [clients,setClients]=useState<Client[]>([]);
@@ -33,9 +36,13 @@ function deleteOrder(id: number) {
 }
  
   return (
-    <div>
-          <Dashboard orders={orders} onChangeStatus={changeStatus} clients={clients} onDeleteOrder={deleteOrder}/>
-    </div>
+   <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Dashboard orders={orders} onChangeStatus={changeStatus} clients={clients} onDeleteOrder={deleteOrder}/>}/>
+        <Route path="/clients" element={<ClientsPage />} />
+        <Route path="/service-orders" element={<ServiceOrders />} />
+      </Routes>
+    </BrowserRouter>
   )
 }
 export default App; 
