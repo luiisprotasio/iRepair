@@ -7,6 +7,7 @@ import { Dashboard } from "./pages/Dashboard.tsx";
 import { BrowserRouter, Routes, Route } from 'react-router';
 import { ClientsPage } from './pages/ClientsPage';
 import { ServiceOrders } from './pages/ServiceOrders';
+import { getAllServiceOrders } from "./services/serviceOrderService.ts";
 
 function App() {
  const [clients,setClients]=useState<Client[]>([]);
@@ -18,6 +19,14 @@ function App() {
     load();
   }, []);
  const [orders,setOrders]= useState<ServiceOrder[]>([]);
+ useEffect(() => {
+    async function load() {
+      const data = await getAllServiceOrders();
+      setOrders(data);
+      console.log("carregou as ordens");
+    }
+    load();
+  }, []);
  function handleAddOrder(newSO: ServiceOrder) {
   setOrders([...orders, newSO]);
 }

@@ -25,10 +25,9 @@
     </div>
 
     <div className={`border ${order.status !='done'? "border-[#653a3a]" : "border-[#25421d]"} rounded-lg text-white text-sm h-18/100 overflow-x-auto overflow-y-auto`}>
-        <h2>Prazo de entrega:</h2>
-        <time id="cardTime" dateTime={order.created_at}>
-    {order.created_at.split("-").reverse().join("/")}
-  </time>
+        <h2>Criado em:</h2>
+        <h4 id="cardTime">{order.created_at}
+  </h4>
     </div>
 
     <div  className="flex text-white gap-1"> 
