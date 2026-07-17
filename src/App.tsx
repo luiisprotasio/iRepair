@@ -7,7 +7,7 @@ import { Dashboard } from "./pages/Dashboard.tsx";
 import { BrowserRouter, Routes, Route } from 'react-router';
 import { ClientsPage } from './pages/ClientsPage';
 import { ServiceOrders } from './pages/ServiceOrders';
-import { getAllServiceOrders } from "./services/serviceOrderService.ts";
+import { deleteServiceOrder, getAllServiceOrders } from "./services/serviceOrderService.ts";
 
 function App() {
  const [clients,setClients]=useState<Client[]>([]);
@@ -40,6 +40,7 @@ function App() {
   setOrders(updatedOrders);
 }
 function deleteOrder(id: number) {
+  deleteServiceOrder(id);
   const updatedOrders = orders.filter(order => order.id !== id);
   setOrders(updatedOrders);
 }
