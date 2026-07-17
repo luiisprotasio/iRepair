@@ -1,4 +1,5 @@
     import "../App.css";
+    import { deleteServiceOrder } from "../services/serviceOrderService";
     import type { ServiceOrder, ServiceOrderStatus } from "../types/serviceOrders";
     interface OrderCardProps{
         order: ServiceOrder;
@@ -41,7 +42,7 @@
         </select>
     </div>
     <div className=" flex justify-start text-white">
-<button onClick={() => onDeleteOrder(order.id)} className="ml-1 p-1 text-center flex-col align-center text-black bg-white border border-red-950 h-7 rounded-xl hover:text-white hover:bg-red-500">Excluir</button>
+<button onClick={() => deleteServiceOrder(order.id)} className="ml-1 p-1 text-center flex-col align-center text-black bg-white border border-red-950 h-7 rounded-xl hover:text-white hover:bg-red-500">Excluir</button>
      </div>
 </div>
         )
