@@ -3,7 +3,7 @@ import "./App.css";
 import { Header } from "./components/Header.tsx";
 import { CardList } from "./components/CardList.tsx";
 import { NewOrderForm } from "./components/NewOrderForm.tsx";
-import type { ServiceOrder } from "./types/ServiceOrders.tsx";
+import type { ServiceOrder } from "./types/serviceOrders.ts";
 import { OrderCard } from "./components/OrderCard.tsx";
 
 function App() {

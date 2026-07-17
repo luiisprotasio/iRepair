@@ -1,5 +1,5 @@
 import "../App.css";
-import type { ServiceOrder } from "../types/ServiceOrders";
+import type { ServiceOrder } from "../types/serviceOrders";
 import { OrderCard } from "./OrderCard";
 interface CardListProps {
   orders: ServiceOrder[];

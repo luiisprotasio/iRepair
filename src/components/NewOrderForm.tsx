@@ -1,6 +1,6 @@
 import "../App.css";
 import { useState } from "react";
-import type { ServiceOrder } from "../types/ServiceOrders";
+import type { ServiceOrder } from "../types/serviceOrders";
 interface NewOrderFormProps {
   onAddOrder: (newSO: ServiceOrder) => void;
 }
