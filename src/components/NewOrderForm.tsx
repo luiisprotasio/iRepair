@@ -36,7 +36,7 @@ export function NewOrderForm({ onAddOrder, clients }: NewOrderFormProps) {
     <h1 className="m-8 text-3xl text-white">Nova Ordem</h1>
     <div className="m-3 flex-col items-center justify-center rounded-xl bg-     [#12282d]/70 border border-[#3a5d65] w-full h-100 overflow-x-auto overflow-y-hidden">
       <h2 className="ml-10 text-lg text-white mt-5">Cliente</h2>
-        <select onChange={(e) => setCid(Number(e.target.value))} className="rounded-lg bg-[#19373e] w-80/100 h-10/100 ml-8 mb-3 border border-[#3a5d65] text-white p-2">
+        <select value={cid}onChange={(e) => setCid(Number(e.target.value))} className="rounded-lg bg-[#19373e] w-80/100 h-10/100 ml-8 mb-3 border border-[#3a5d65] text-white p-2">
         <option value="0" >-Escolha um cliente-</option>
         {clients.map(customer => (
       <option key={customer.id} value={customer.id}>
