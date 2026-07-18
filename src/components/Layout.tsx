@@ -4,7 +4,7 @@ export function Layout(){
 return (
     <div className="bg-radial from-[#133036] to-[#0a181b] min-h-screen">
               <Header />
-              <main className="flex justify-start">
+              <main>
                 <Outlet />
               </main>
             </div>

@@ -1,7 +1,7 @@
 
 import "../App.css";
 import { Header } from "../components/Header.tsx";
-import { CardList } from "../components/CardList.tsx";
+import { CardListDash } from "../components/CardListDash.tsx";
 import type { ServiceOrder, ServiceOrderStatus } from "../types/serviceOrders.ts";
 import type { Client } from "../types/client.ts";
 
@@ -14,6 +14,6 @@ interface DashboardProps{
 }
 export function Dashboard({orders,clients,onChangeStatus,onDeleteOrder}:DashboardProps){
     return (
-              <CardList orders={orders} onChangeStatus={onChangeStatus} clients={clients} onDeleteOrder={onDeleteOrder} />
+              <CardListDash orders={orders} onChangeStatus={onChangeStatus} clients={clients} onDeleteOrder={onDeleteOrder} />
       )
 }

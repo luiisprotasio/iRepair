@@ -13,16 +13,7 @@ export function NewClientForm({ onAddOrder, clients }: NewOrderFormProps) {
   const [problem,setProblem]=useState("");
   const [date, setDate]=useState("");
   function createOrder(){
-    const newSO: ServiceOrder = {
-      id:Math.floor(Math.random()*10000),
-      client_id:cid,
-      device:model,
-      issue:problem,
-      created_at:date,
-      status:'open'
 
-    }
-    onAddOrder(newSO);
   }
   return(
 <div className=" ml-10 w-20/100">
