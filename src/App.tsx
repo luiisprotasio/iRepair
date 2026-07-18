@@ -8,6 +8,7 @@ import { BrowserRouter, Routes, Route } from 'react-router';
 import { ClientsPage } from './pages/ClientsPage';
 import { ServiceOrders } from './pages/ServiceOrders';
 import { deleteServiceOrder, getAllServiceOrders } from "./services/serviceOrderService.ts";
+import { deleteClient } from "./services/clientService.ts";
 import { Layout } from "./components/Layout.tsx";
 
 function App() {
@@ -45,13 +46,18 @@ function deleteOrder(id: number) {
   const updatedOrders = orders.filter(order => order.id !== id);
   setOrders(updatedOrders);
 }
+function removeClient(id: number){
+  deleteClient(id);
+  const updatedClients = clients.filter(client => client.id !== id);
+  setClients(updatedClients);
+}
  
   return (
    <BrowserRouter>
       <Routes>
         <Route element={<Layout />}>
           <Route path="/" element={<Dashboard orders={orders} clients={clients} onChangeStatus={changeStatus} onDeleteOrder={deleteOrder}/>} />
-          <Route path="/clients" element={<ClientsPage />} />
+          <Route path="/clients" element={<ClientsPage onDeleteClient={removeClient} clients={clients} />} />
           <Route path="/service-orders" element={<ServiceOrders />} />
         </Route>
       </Routes>
