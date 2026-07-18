@@ -5,4 +5,4 @@ export interface Client {
   email: string;
   created_at: string;
 }
-export type CreateClientData = Omit<Client, 'id' | 'date'>;
+export type CreateClientData = Omit<Client, 'id' | 'created_at'>;
