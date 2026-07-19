@@ -13,22 +13,45 @@ import { Layout } from "./components/Layout.tsx";
 import { createClient } from "./services/clientService.ts";
 
 const App=() =>{
- const [clients,setClients]=useState<Client[]>([]);
- useEffect(() => {
-    async function load() {
+ const [clients,setClients]=useState<Client[]>([]); 
+ const [orders,setOrders]= useState<ServiceOrder[]>([]);
+ const [loading,setLoading]=useState(true);
+/* useEffect(() => {
+    async function loadClients() {
       const data = await getAllClients();
       setClients(data);
     }
-    load();
+    loadClients();
   }, []);
- const [orders,setOrders]= useState<ServiceOrder[]>([]);
+
  useEffect(() => {
-    async function load() {
+    async function loadOrders() {
       const data = await getAllServiceOrders();
       setOrders(data);
     }
-    load();
+    loadOrders();
+  }, []);*/
+useEffect(()=> {
+  async function loadAllData(){
+   
+    try { 
+      setLoading(true);
+      const [clientsData, ordersData] = await Promise.all([
+          getAllClients(),
+          getAllServiceOrders()
+      ]);
+      setClients(clientsData);
+      setOrders(ordersData);
+    }
+    catch(error){
+      console.log("Erro no carregamento de dados",error);
+    } finally {
+      setLoading(false);  
+    }
+  }
+  loadAllData();
   }, []);
+
  async function handleAddOrder(newSOdata: CreateServiceOrderData) {
   try {
     const newSO = await createServiceOrder(newSOdata);
