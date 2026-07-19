@@ -95,9 +95,9 @@ async function newClient(newCdata:CreateClientData){
    <BrowserRouter>
       <Routes>
         <Route element={<Layout />}>
-          <Route path="/" element={<Dashboard orders={orders} clients={clients} onChangeStatus={changeStatus}/>} />
-          <Route path="/clients" element={<ClientsPage onDeleteClient={removeClient} clients={clients} onCreateClient={newClient}/>} />
-          <Route path="/service-orders" element={<ServiceOrders orders={orders} clients={clients} onDeleteOrder={deleteOrder} onAddOrder={handleAddOrder} />} />
+          <Route path="/" element={<Dashboard orders={orders} clients={clients} onChangeStatus={changeStatus} isLoading={loading}/>} />
+          <Route path="/clients" element={<ClientsPage onDeleteClient={removeClient} clients={clients} onCreateClient={newClient} isLoading={loading}/>} />
+          <Route path="/service-orders" element={<ServiceOrders orders={orders} clients={clients} onDeleteOrder={deleteOrder} onAddOrder={handleAddOrder} isLoading={loading} />} />
         </Route>
       </Routes>
     </BrowserRouter>
