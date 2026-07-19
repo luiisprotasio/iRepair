@@ -12,7 +12,7 @@ import { deleteClient } from "./services/clientService.ts";
 import { Layout } from "./components/Layout.tsx";
 import { createClient } from "./services/clientService.ts";
 
-function App() {
+const App=() =>{
  const [clients,setClients]=useState<Client[]>([]);
  useEffect(() => {
     async function load() {

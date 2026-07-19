@@ -1,6 +1,6 @@
     import "../App.css";
     import { Link } from 'react-router';
-    export function Header() {
+    export const Header=() =>{
         return (
             <header className="flex justify-between items-center bg-linear-90 from-[#0a181b] via-[#133036] to-[#0a181b] border-b border-[#3a5d65]  p-4">
             <div className="flex justify-start"><img src="/src/assets/logo.png" alt="Logo" className="w-5 h-8.55 mr-4 ml-2"/>

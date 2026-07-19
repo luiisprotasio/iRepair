@@ -8,7 +8,7 @@ interface NewClientFormProps {
   onCreateClient: (newC:CreateClientData) => void;
 
 }
-export function NewClientForm({ onCreateClient }: NewClientFormProps) {
+export const NewClientForm=({ onCreateClient }: NewClientFormProps) =>{
   const [name, setName]=useState("");
   const [phone, setPhone]=useState("");
   const [email,setEmail]=useState("");

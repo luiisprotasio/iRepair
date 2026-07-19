@@ -8,7 +8,7 @@ interface NewOrderFormProps {
   clients: Client[];
   onAddOrder: (newSO: CreateServiceOrderData) => void;
 }
-export function NewOrderForm({ onAddOrder, clients }: NewOrderFormProps) {
+export const NewOrderForm=({ onAddOrder, clients }: NewOrderFormProps) =>{
   const [cid, setCid]=useState(0);
   const [model, setModel]=useState("");
   const [problem,setProblem]=useState("");

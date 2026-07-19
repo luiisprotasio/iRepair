@@ -10,7 +10,7 @@ onDeleteClient: (id: number) => void;
 onCreateClient: (newC:CreateClientData) => void;
 
 }
-export function ClientsPage({clients, onDeleteClient,onCreateClient}:ClientsPageProps){
+export const ClientsPage=({clients, onDeleteClient,onCreateClient}:ClientsPageProps)=>{
      return (
               <div className="flex justify-around w-97/100">
                 <ClientList clients={clients} onDeleteClient={onDeleteClient}/>

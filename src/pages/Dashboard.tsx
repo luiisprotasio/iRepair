@@ -12,7 +12,7 @@ interface DashboardProps{
     onDeleteOrder: (id: number) => void;
 
 }
-export function Dashboard({orders,clients,onChangeStatus,onDeleteOrder}:DashboardProps){
+export const Dashboard=({orders,clients,onChangeStatus,onDeleteOrder}:DashboardProps)=>{
     return (
               <CardListDash orders={orders} onChangeStatus={onChangeStatus} clients={clients} onDeleteOrder={onDeleteOrder} />
       )

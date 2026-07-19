@@ -7,7 +7,7 @@
         onChangeStatus: (id: number, value: ServiceOrderStatus) => void;
         onDeleteOrder: (id: number) => void;
     }
-    export function OrderCardDash({ order, name, onChangeStatus ,onDeleteOrder}: OrderCardProps){
+    export const OrderCardDash=({ order, name, onChangeStatus ,onDeleteOrder}: OrderCardProps)=>{
         return (
            <div className={`m-3 flex-col justify-start rounded-3xl ${order.status=='open' ? "bg-[#6b3d40]" :order.status == 'in_progress'?"bg-amber-300/30": "bg-[#6f9265]/30"} border border-4 ${order.status =='open'? "border-[#360303]" :order.status == 'in_progress'?"border-yellow-500": "border-[#142e0d]"} w-56 h-75 p-2`}>
     <div className={`border ${order.status =='open'? "border-[#360303]" : order.status == 'in_progress'?"border-yellow-500":"border-[#142e0d]"} border-2 rounded-lg text-white text-sm h-18/100 overflow-x-auto overflow-y-auto`}>

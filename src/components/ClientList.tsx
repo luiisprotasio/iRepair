@@ -5,7 +5,7 @@ interface ClientListProps{
     clients: Client[];
     onDeleteClient: (id: number) => void;
 }
-export function ClientList({clients,onDeleteClient}:ClientListProps){
+export const ClientList=({clients,onDeleteClient}:ClientListProps)=>{
     return(
        <div className=" ml-10 w-95/100 h-220">
            <h1 className="m-8 text-3xl text-white text-center">Clientes</h1>

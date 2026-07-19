@@ -11,7 +11,7 @@ interface ServiceOrderPageProps{
     onAddOrder: (newOS: CreateServiceOrderData) => void;
 
 }
-export function ServiceOrders({clients,orders,onChangeStatus,onDeleteOrder,onAddOrder}:ServiceOrderPageProps){
+export const ServiceOrders=({clients,orders,onChangeStatus,onDeleteOrder,onAddOrder}:ServiceOrderPageProps)=>{
      return (
               <div className="flex justify-around w-97/100">
                 <CardListManager orders={orders} clients={clients} onChangeStatus={onChangeStatus} onDeleteOrder={onDeleteOrder}/>
