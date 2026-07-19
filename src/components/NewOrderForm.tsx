@@ -1,8 +1,6 @@
 import "../App.css";
-import { useEffect, useState } from "react";
-import type { ServiceOrder } from "../types/serviceOrders";
+import { useState } from "react";
 import type { Client } from "../types";
-import { getAllClients } from "../services/clientService";
 import type { CreateServiceOrderData } from "../types/serviceOrders";
 interface NewOrderFormProps {
   clients: Client[];
@@ -12,7 +10,6 @@ export const NewOrderForm=({ onAddOrder, clients }: NewOrderFormProps) =>{
   const [cid, setCid]=useState(0);
   const [model, setModel]=useState("");
   const [problem,setProblem]=useState("");
-  const [date, setDate]=useState("");
   function createOrder(e: React.MouseEvent){
     e.preventDefault();
     if(cid===0){

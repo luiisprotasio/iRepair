@@ -1,8 +1,6 @@
 import "../App.css";
-import { useEffect, useState } from "react";
-import type { ServiceOrder } from "../types/serviceOrders";
+import { useState } from "react";
 import type { Client, CreateClientData } from "../types";
-import { getAllClients } from "../services/clientService";
 interface NewClientFormProps {
   clients: Client[];
   onCreateClient: (newC:CreateClientData) => void;

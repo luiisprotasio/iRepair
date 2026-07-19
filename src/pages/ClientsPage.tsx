@@ -1,5 +1,3 @@
-import { Header } from "../components/Header"
-import { ClientCard } from "../components/ClientCard"
 import type { Client } from "../types";
 import { ClientList } from "../components/ClientList";
 import { NewClientForm } from "../components/NewClientForm";
