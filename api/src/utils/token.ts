@@ -1,5 +1,8 @@
 import jwt, { SignOptions } from 'jsonwebtoken'
-
+interface TokenInput {
+  id: number
+  email: string
+}
 interface TokenPayload {
   id: number
   email: string
@@ -12,7 +15,7 @@ export function verifyToken(token: string): TokenPayload {
   const decoded = jwt.verify(token, process.env.JWT_SECRET) as TokenPayload
   return decoded
 }
-export function generateToken(payload: TokenPayload): string {
+export function generateToken(payload: TokenInput): string {
   return jwt.sign(payload, process.env.JWT_SECRET, {
     expiresIn: process.env.JWT_EXPIRES_IN as SignOptions['expiresIn'],
   })}
