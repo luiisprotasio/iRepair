@@ -1,7 +1,5 @@
 import { Request, Response } from 'express'
 import { AuthService } from './auth.services'
-import { AppError } from '../../utils/AppError'
-import { authMiddleware } from '../../middleware/authMiddleware'
 
 const authService = new AuthService()
 
