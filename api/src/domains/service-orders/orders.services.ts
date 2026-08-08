@@ -4,19 +4,21 @@ export interface Order {
     id: number;
     clientId: number;
     client: string;
+    device: string;
     issue: string;
     completed: boolean;
     createdAt: string;
 }
 interface CreateOrder {
     clientId: number;
+    device: string;
     issue: string;
 }
 
 export class ServiceOrderService {
     async createOrder( orderData: CreateOrder) {
-        const { clientId, issue } = orderData;
-        if (!clientId || !issue) {
+        const { clientId, device, issue } = orderData;
+        if (!clientId || !device || !issue) {
             throw new AppError("Dados inválidos", 400);
         }
         const clientExists = await prisma.client.findUnique({
@@ -28,6 +30,7 @@ export class ServiceOrderService {
         const newOrder = await prisma.serviceOrder.create({
             data: {
                 clientId,
+                device,
                 issue,
             },
         });
@@ -78,7 +81,7 @@ export class ServiceOrderService {
         }
         return searchedOrder;
     }
-    async editOrder({ orderId, clientId, issue, completed }: { orderId: number; clientId?: number; issue?: string; completed?: boolean }) {
+    async editOrder({ orderId, clientId, device, issue, completed }: { orderId: number; clientId?: number; device?: string; issue?: string; completed?: boolean }) {
         const order = await prisma.serviceOrder.findUnique({ where: { id: orderId } });
         if (!order) {
             throw new AppError("Ordem de serviço não encontrada", 404);
@@ -95,6 +98,7 @@ export class ServiceOrderService {
             where: { id: orderId },
             data: {
             ...(clientId !== undefined && { clientId: clientId }),
+            ...(device !== undefined && { device: device }),
             ...(issue !== undefined && { issue: issue }),
             ...(completed !== undefined && { completed: completed }),
         }});

@@ -45,10 +45,11 @@ export class ServiceOrderController {
         if (!userId) {
             return res.status(401).json({ error: "Usuário não autenticado" });
         }
-        const { orderId, clientId, issue, completed } = req.body;
+        const { orderId, clientId, device, issue, completed } = req.body;
         const updatedOrder = await serviceOrderService.editOrder({
             orderId,
             clientId,
+            device,
             issue,
             completed,
         });

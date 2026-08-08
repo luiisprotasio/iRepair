@@ -23,6 +23,7 @@ model ServiceOrder {
   id        Int      @id @default(autoincrement())
   clientId    Int
   client     Client @relation(fields: [clientId],references: [id],onDelete: Cascade)
+  device String
   issue     String
   completed Boolean  @default(false)
   createdAt DateTime @default(now())
