@@ -33,7 +33,6 @@ export class AuthService {
     })
 
     if (!usuario) {
-      // Mensagem genérica: não revele se o email existe ou não
       throw new AppError('Credenciais inválidas', 401)
     }
 
