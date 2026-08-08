@@ -1,10 +1,20 @@
 import express from 'express';
-import { tasksApp } from '../domains/temp/routes/TarefaRoutes';
+import { clientRouter } from '../domains/clients/client.routes';
+import { ordersRouter } from '../domains/service-orders/orders.routes';
 import { authRoutes } from '../domains/auths/auth.routes';
 import cookieParser from 'cookie-parser'
+import cors from 'cors'
 const app = express();
+app.use(cors({
+  origin: 'http://localhost:5173',
+  credentials: true,    
+}));    
 app.use(cookieParser());
 app.use(express.json());
-app.use('/tasks', tasksApp);
 app.use('/auth', authRoutes);
+app.use('/clients', clientRouter);
+app.use('/orders', ordersRouter);
+
+
+        
 export { app };
