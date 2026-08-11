@@ -11,26 +11,14 @@ import { createServiceOrder, deleteServiceOrder, getAllServiceOrders } from "./s
 import { deleteClient } from "./services/clientService.ts";
 import { Layout } from "./components/Layout.tsx";
 import { createClient } from "./services/clientService.ts";
-
+import { AuthProvider } from './contexts/AuthContext'
+import { PrivateRoute } from './routes/PrivateRoute'
+import { Login } from './pages/Login'
+import { Register } from './pages/Register'
 const App=() =>{
  const [clients,setClients]=useState<Client[]>([]); 
  const [orders,setOrders]= useState<ServiceOrder[]>([]);
  const [loading,setLoading]=useState(true);
-/* useEffect(() => {
-    async function loadClients() {
-      const data = await getAllClients();
-      setClients(data);
-    }
-    loadClients();
-  }, []);
-
- useEffect(() => {
-    async function loadOrders() {
-      const data = await getAllServiceOrders();
-      setOrders(data);
-    }
-    loadOrders();
-  }, []);*/
 useEffect(()=> {
   async function loadAllData(){
    
@@ -93,13 +81,19 @@ async function newClient(newCdata:CreateClientData){
  
   return (
    <BrowserRouter>
+    <AuthProvider>
       <Routes>
-        <Route element={<Layout />}>
-          <Route path="/" element={<Dashboard orders={orders} clients={clients} onChangeStatus={changeStatus} isLoading={loading}/>} />
-          <Route path="/clients" element={<ClientsPage onDeleteClient={removeClient} clients={clients} onCreateClient={newClient} isLoading={loading}/>} />
-          <Route path="/service-orders" element={<ServiceOrders orders={orders} clients={clients} onDeleteOrder={deleteOrder} onAddOrder={handleAddOrder} isLoading={loading} />} />
-        </Route>
-      </Routes>
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />}/>
+        <Route element={<PrivateRoute />}>
+          <Route element={<Layout />}>
+            <Route path="/" element={<Dashboard orders={orders} clients={clients} onChangeStatus={changeStatus} isLoading={loading}/>} />
+            <Route path="/clients" element={<ClientsPage onDeleteClient={removeClient} clients={clients} onCreateClient={newClient} isLoading={loading}/>} />
+            <Route path="/service-orders" element={<ServiceOrders orders={orders} clients={clients} onDeleteOrder={deleteOrder} onAddOrder={handleAddOrder} isLoading={loading} />} />
+            </Route>
+          </Route>
+        </Routes>
+      </AuthProvider>
     </BrowserRouter>
   )
 }
