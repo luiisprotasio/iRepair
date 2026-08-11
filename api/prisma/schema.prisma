@@ -11,6 +11,11 @@ generator client {
 datasource db {
   provider = "mysql"
 }
+enum OrderStatus {
+  open
+  in_progress
+  done
+}
 model Client {
   id      Int        @id @default(autoincrement())
   name String
@@ -25,7 +30,7 @@ model ServiceOrder {
   client     Client @relation(fields: [clientId],references: [id],onDelete: Cascade)
   device String
   issue     String
-  completed Boolean  @default(false)
+  status   OrderStatus @default(open)
   createdAt DateTime @default(now())
 }
 model User {

@@ -1,12 +1,13 @@
 import { prisma } from "../../config/prismaClient";
 import { AppError } from "../../utils/AppError";
+import { OrderStatus } from "../../../generated/prisma/client";
 export interface Order {
     id: number;
     clientId: number;
     client: string;
     device: string;
     issue: string;
-    completed: boolean;
+    status: OrderStatus;
     createdAt: string;
 }
 interface CreateOrder {
@@ -34,31 +35,26 @@ export class ServiceOrderService {
                 issue,
                 
             },
-              include: {
-        client: true,
-    },
+            include: {
+                client: true,
+             },
         });
         return newOrder;
     }
-    async getAllOrders(done?:string) {
-        if (done === "true") {
-            const orders = await prisma.serviceOrder.findMany({
-                where: {
-                    completed: true,
-                },
-            });
-            return orders;
-        } else if (done === "false") {
-            const orders = await prisma.serviceOrder.findMany({
-                where: {
-                    completed: false,
-                },
-            });
-            return orders;
-        }
-        const orders = await prisma.serviceOrder.findMany();
+    async getAllOrders(status?: string) {
+    if (status) {
+        const orders = await prisma.serviceOrder.findMany({
+            where: { status: status as OrderStatus },
+            include: { client: true },
+        });
         return orders;
     }
+    const orders = await prisma.serviceOrder.findMany({
+        include: { client: true },
+    });
+    return orders;
+}
+    
     async deleteOrder(idDelete: number) {
         const deletedOrder = await prisma.serviceOrder.findUnique({
             where: {
@@ -85,40 +81,44 @@ export class ServiceOrderService {
         }
         return searchedOrder;
     }
-    async editOrder({ orderId, clientId, device, issue, completed }: { orderId: number; clientId?: number; device?: string; issue?: string; completed?: boolean }) {
-        const order = await prisma.serviceOrder.findUnique({ where: { id: orderId } });
-        if (!order) {
-            throw new AppError("Ordem de serviço não encontrada", 404);
-        }
-        if (clientId) {
-            const clientExists = await prisma.client.findUnique({
-                where: { id: clientId },
-            });
-            if (!clientExists) {
-                throw new AppError("Cliente não encontrado", 404);
-            }
-        }
-        const updatedOrder = await prisma.serviceOrder.update({
-            where: { id: orderId },
-            data: {
-            ...(clientId !== undefined && { clientId: clientId }),
-            ...(device !== undefined && { device: device }),
-            ...(issue !== undefined && { issue: issue }),
-            ...(completed !== undefined && { completed: completed }),
-        }});
-        return updatedOrder;
+   async editOrder({ orderId, clientId, device, issue, status }: { orderId: number; clientId?: number; device?: string; issue?: string; status?: OrderStatus }) {
+    const order = await prisma.serviceOrder.findUnique({ where: { id: orderId } });
+    if (!order) {
+        throw new AppError("Ordem de serviço não encontrada", 404);
     }
+    if (clientId) {
+        const clientExists = await prisma.client.findUnique({ where: { id: clientId } });
+        if (!clientExists) {
+            throw new AppError("Cliente não encontrado", 404);
+        }
+    }
+    const updatedOrder = await prisma.serviceOrder.update({
+        where: { id: orderId },
+        data: {
+            ...(clientId !== undefined && { clientId }),
+            ...(device !== undefined && { device }),
+            ...(issue !== undefined && { issue }),
+            ...(status !== undefined && { status }),
+        },
+        include: { client: true },
+    });
+    return updatedOrder;
+}
     async toggleOrderCompletion(orderId: number) {
-        const order = await prisma.serviceOrder.findUnique({ where: { id: orderId } });
-        if (!order) {
-            throw new AppError("Ordem de serviço não encontrada", 404);
-        }
-        const updatedOrder = await prisma.serviceOrder.update({
-            where: { id: orderId },
-            data: {
-                completed: !order.completed,
-            },
-        });
-        return updatedOrder;
+    const order = await prisma.serviceOrder.findUnique({ where: { id: orderId } });
+    if (!order) {
+        throw new AppError("Ordem de serviço não encontrada", 404);
     }
+    const nextStatus: Record<OrderStatus, OrderStatus> = {
+        open: "in_progress",
+        in_progress: "done",
+        done: "open",
+    };
+    const updatedOrder = await prisma.serviceOrder.update({
+        where: { id: orderId },
+        data: { status: nextStatus[order.status] },
+        include: { client: true },
+    });
+    return updatedOrder;
+}
 }

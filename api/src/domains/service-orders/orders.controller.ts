@@ -14,14 +14,14 @@ export class ServiceOrderController {
         return res.status(201).json(newOrder);
     }
     async getAllOrders(req: Request, res: Response) {
-         const userId = req.user?.id;
-        if (!userId) {
-            return res.status(401).json({ error: "Usuário não autenticado" });
-        }
-        const { done } = req.query;
-        const orders = await serviceOrderService.getAllOrders(done as string);
-        return res.status(200).json(orders);
+    const userId = req.user?.id;
+    if (!userId) {
+        return res.status(401).json({ error: "Usuário não autenticado" });
     }
+    const { status } = req.query;
+    const orders = await serviceOrderService.getAllOrders(status as string);
+    return res.status(200).json(orders);
+}
     async deleteOrder(req: Request, res: Response) {
         const userId = req.user?.id;
         if (!userId) {
@@ -41,20 +41,20 @@ export class ServiceOrderController {
         return res.status(200).json(order);
     }
     async editOrder(req: Request, res: Response) {
-        const userId = req.user?.id;
-        if (!userId) {
-            return res.status(401).json({ error: "Usuário não autenticado" });
-        }
-        const { orderId, clientId, device, issue, completed } = req.body;
-        const updatedOrder = await serviceOrderService.editOrder({
-            orderId,
-            clientId,
-            device,
-            issue,
-            completed,
-        });
-        return res.status(200).json(updatedOrder);
+    const userId = req.user?.id;
+    if (!userId) {
+        return res.status(401).json({ error: "Usuário não autenticado" });
     }
+    const { orderId, clientId, device, issue, status } = req.body;
+    const updatedOrder = await serviceOrderService.editOrder({
+        orderId,
+        clientId,
+        device,
+        issue,
+        status,
+    });
+    return res.status(200).json(updatedOrder);
+}
     async toggleOrderCompletion(req: Request, res: Response) {
         const userId = req.user?.id;
         if (!userId) {
