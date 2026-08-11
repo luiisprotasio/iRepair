@@ -19,7 +19,7 @@ export const LoginForm = ({ onSubmit, onEmailChange, onPasswordChange, email, pa
            
             <form onSubmit={onSubmit} className='flex flex-col items-center justify-center'>
             <input className="m-4 p-2 border border-[#3a5d65] bg-[#19373e] rounded-md text-white w-7/10" type="email" value={email} onChange={e => onEmailChange(e.target.value)} placeholder="Email" required/>
-            <input className="m-4 p-2 border border-[#3a5d65] bg-[#19373e] rounded-md text-white w-7/10" type="password" value={password} onChange={e => onPasswordChange(e.target.value)} placeholder="Password" required/>
+            <input className="m-4 p-2 border border-[#3a5d65] bg-[#19373e] rounded-md text-white w-7/10" type="password" value={password} onChange={e => onPasswordChange(e.target.value)} placeholder="Senha" required/>
             {error && <p style={{ color: 'red' }}>{error}</p>}
             <div className="flex justify-center">
                 <button className="m-4 p-2 bg-[#19373e] border border-[#3a5d65] text-white rounded-md hover:bg-white hover:text-black" type="submit" disabled={loading}>
