@@ -45,3 +45,31 @@ export async function deleteClient(id: number): Promise<void> {
   }
   }
 }
+export async function getClientById(id: number): Promise<Client> {
+  try{const response = await api.get<Client>(`/clients/${id}`);
+  return response.data;}
+    catch (error){
+      if (axios.isAxiosError(error)) {
+        console.error('Erro da API:', error.response?.data);
+        console.error('Status:', error.response?.status);
+        throw error;
+      } else {
+        console.error('Erro inesperado:', error);
+        throw error;
+    }
+    }
+  }
+export async function editClient(id: number, data: CreateClientData): Promise<Client> {
+  try{const response = await api.put<Client>(`/clients/${id}`, data);
+  return response.data;}
+    catch (error){
+      if (axios.isAxiosError(error)) {
+        console.error('Erro da API:', error.response?.data);
+        console.error('Status:', error.response?.status);
+        throw error;
+      } else {
+        console.error('Erro inesperado:', error);
+        throw error;
+    }
+    }
+  }
