@@ -15,13 +15,13 @@ export const ClientCard=({client, onDeleteClient}:ClientCardProps)=>{
                 <h2>Telefone:</h2>
                 <h3 id="clientPhone">{client.phone}</h3>
             </div>
-             <div className={` mb-1 border-[#2d5e66] border-2 rounded-lg text-white text-sm h-18/100 overflow-x-auto overflow-y-auto`}>
+             <div className={` mb-1 border-[#2d5e66] border-2 rounded-lg text-white text-sm h-18/100 overflow-x-clip overflow-y-clip`}>
                 <h2>E-mail:</h2>
                 <h3 id="clientName">{client.email}</h3>
             </div>
              <div className={` mb-1 border-[#2d5e66] border-2 rounded-lg text-white text-sm h-18/100 overflow-x-auto overflow-y-auto`}>
                 <h2>Data de criação:</h2>
-                <h3 id="clientName">{client.created_at}</h3>
+                <h3 id="clientName">{client.createdAt}</h3>
             </div>
             <button onClick={() => onDeleteClient(client.id)} className="ml-1 p-1 text-center flex-col align-center text-black bg-white border border-red-950 h-7 rounded-xl hover:text-white hover:bg-red-500">Excluir</button>
         </div>
