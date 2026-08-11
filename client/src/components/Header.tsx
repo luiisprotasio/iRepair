@@ -10,6 +10,7 @@
                 <Link className="hover:text-blue-300"to="/">Dashboard</Link>
                 <Link className="hover:text-blue-300" to="/clients">Clientes</Link>
                 <Link className="hover:text-blue-300" to="/service-orders">Ordens de Serviço</Link>
+                <Link className="hover:text-red-700" to="/logout">Sair</Link>
             </nav>
             </header>
         )

@@ -15,6 +15,7 @@ import { AuthProvider } from './contexts/AuthContext'
 import { PrivateRoute } from './routes/PrivateRoute'
 import { Login } from './pages/Login'
 import { Register } from './pages/Register'
+import { Logout } from "./pages/Logout.tsx";
 const App=() =>{
  const [clients,setClients]=useState<Client[]>([]); 
  const [orders,setOrders]= useState<ServiceOrder[]>([]);
@@ -90,6 +91,7 @@ async function newClient(newCdata:CreateClientData){
             <Route path="/" element={<Dashboard orders={orders} clients={clients} onChangeStatus={changeStatus} isLoading={loading}/>} />
             <Route path="/clients" element={<ClientsPage onDeleteClient={removeClient} clients={clients} onCreateClient={newClient} isLoading={loading}/>} />
             <Route path="/service-orders" element={<ServiceOrders orders={orders} clients={clients} onDeleteOrder={deleteOrder} onAddOrder={handleAddOrder} isLoading={loading} />} />
+          <Route path="/logout" element={<Logout />} />
             </Route>
           </Route>
         </Routes>
