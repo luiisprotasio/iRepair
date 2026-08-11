@@ -18,7 +18,7 @@ export const CardListManager=({ orders, clients,onDeleteOrder}: CardListProps) =
             email:"invalido",
             created_at:"invalido",
         }
-        const clienteDoCard: Client = clients.find(c => c.id === currentOrder.client_id)||clienteInvalido; 
+        const clienteDoCard: Client = clients.find(c => c.id === currentOrder.clientId)||clienteInvalido; 
         const name = clienteDoCard?.name;
         return (
         <OrderCardManager key={currentOrder.id} order={currentOrder} name={name} onDeleteOrder={onDeleteOrder}/>

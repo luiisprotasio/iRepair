@@ -25,7 +25,7 @@
 
     <div className={`mb-1 border-[#2d5e66] border-2 rounded-lg text-white text-sm h-18/100 overflow-x-auto overflow-y-auto`}>
         <h2>Criado em:</h2>
-        <h4 id="cardTime">{order.created_at}
+        <h4 id="cardTime">{order.createdAt}
   </h4>
     </div>
 

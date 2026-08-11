@@ -32,7 +32,11 @@ export class ServiceOrderService {
                 clientId,
                 device,
                 issue,
+                
             },
+              include: {
+        client: true,
+    },
         });
         return newOrder;
     }
