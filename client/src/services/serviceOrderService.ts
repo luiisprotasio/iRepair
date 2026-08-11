@@ -3,7 +3,7 @@ import axios from 'axios';
 import type { ServiceOrder, CreateServiceOrderData } from '../types';
 
 export async function getAllServiceOrders(): Promise<ServiceOrder[]> {
-  try{const response = await api.get<ServiceOrder[]>('/service-orders');
+  try{const response = await api.get<ServiceOrder[]>('/orders');
   return response.data;}
   catch (error){
    if (axios.isAxiosError(error)) {
@@ -20,7 +20,7 @@ export async function getAllServiceOrders(): Promise<ServiceOrder[]> {
 export async function createServiceOrder(
   data: CreateServiceOrderData
 ): Promise<ServiceOrder> {
-  try{const response = await api.post<ServiceOrder>('/service-orders', data);
+  try{const response = await api.post<ServiceOrder>('/orders', data);
   return response.data;}
    catch (error){
     if (axios.isAxiosError(error)) {
@@ -36,7 +36,7 @@ export async function createServiceOrder(
 }
 
 export async function deleteServiceOrder(id: number): Promise<void> {
- try{ await api.delete(`/service-orders/${id}`);}
+ try{ await api.delete(`/orders/${id}`);}
   catch (error){
     if (axios.isAxiosError(error)) {
       console.error('Erro da API:', error.response?.data);
@@ -47,7 +47,7 @@ export async function deleteServiceOrder(id: number): Promise<void> {
 }
 }
 export async function getServiceOrderById(id: number): Promise<ServiceOrder> {
-  try{const response = await api.get<ServiceOrder>(`/service-orders/${id}`);
+  try{const response = await api.get<ServiceOrder>(`/orders/${id}`);
   return response.data;}
     catch (error){
       if (axios.isAxiosError(error)) {
@@ -61,7 +61,7 @@ export async function getServiceOrderById(id: number): Promise<ServiceOrder> {
     }
 }
 export async function editServiceOrder(id: number, data: CreateServiceOrderData): Promise<ServiceOrder> {
-  try{const response = await api.put<ServiceOrder>(`/service-orders/${id}`, data);
+  try{const response = await api.put<ServiceOrder>(`/orders/${id}`, data);
   return response.data;}
     catch (error){
       if (axios.isAxiosError(error)) {
