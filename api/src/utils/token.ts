@@ -11,7 +11,6 @@ interface TokenPayload {
 }
 
 export function verifyToken(token: string): TokenPayload {
-  // jwt.verify lança uma exceção se o token for inválido ou expirado
   const decoded = jwt.verify(token, process.env.JWT_SECRET) as TokenPayload
   return decoded
 }
@@ -19,3 +18,11 @@ export function generateToken(payload: TokenInput): string {
   return jwt.sign(payload, process.env.JWT_SECRET, {
     expiresIn: process.env.JWT_EXPIRES_IN as SignOptions['expiresIn'],
   })}
+export function generateRefreshToken(payload: TokenInput): string {
+  return jwt.sign(payload, process.env.JWT_REFRESH_SECRET, {
+    expiresIn: process.env.JWT_REFRESH_EXPIRES_IN as SignOptions['expiresIn'],
+  })}
+export function verifyRefreshToken(token: string): TokenPayload {
+  const decoded = jwt.verify(token, process.env.JWT_REFRESH_SECRET) as TokenPayload
+  return decoded
+}
