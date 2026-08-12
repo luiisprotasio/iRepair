@@ -38,13 +38,13 @@ model User {
   email      String     @unique
   password   String
   createdAt   DateTime @default(now())
-  longDurationToken RefreshToken[]
+  longDurationToken RefreshToken?
 }
 model RefreshToken {
   id       Int       @id @default(autoincrement())
   token   String      @unique
-  user    User         @relation(fields:[userId],references: [id], onDelete: Cascade)
-  userId    Int
+  user    User         @relation(fields: [userId],references: [id], onDelete: Cascade)
+  userId    Int       @unique
   expiresAt DateTime
   createdAt DateTime @default(now())
 }
