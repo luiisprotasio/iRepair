@@ -16,8 +16,9 @@ import { PrivateRoute } from './routes/PrivateRoute'
 import { Login } from './pages/Login'
 import { Register } from './pages/Register'
 import { Logout } from "./pages/Logout.tsx";
-
-const App=() =>{
+import { useAuth } from "./contexts/AuthContext";
+const AppRoutes=() =>{
+ const {isAuthenticated} = useAuth()
  const [clients,setClients]=useState<Client[]>([]); 
  const [orders,setOrders]= useState<ServiceOrder[]>([]);
  const [loading,setLoading]=useState(true);
@@ -40,7 +41,7 @@ useEffect(()=> {
     }
   }
   loadAllData();
-  }, []);
+  }, [isAuthenticated]);
 
  async function handleAddOrder(newSOdata: CreateServiceOrderData) {
   try {
@@ -82,8 +83,6 @@ async function newClient(newCdata:CreateClientData){
 }
  
   return (
-   <BrowserRouter>
-    <AuthProvider>
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />}/>
@@ -96,8 +95,15 @@ async function newClient(newCdata:CreateClientData){
             </Route>
           </Route>
         </Routes>
+  )
+}
+const App=() => {
+  return(
+  <BrowserRouter>
+      <AuthProvider>
+        <AppRoutes />
       </AuthProvider>
-    </BrowserRouter>
+  </BrowserRouter>
   )
 }
 export default App; 
