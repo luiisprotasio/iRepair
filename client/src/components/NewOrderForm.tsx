@@ -23,7 +23,6 @@ export const NewOrderForm=({ onAddOrder, clients }: NewOrderFormProps) =>{
       status:'open'
     }
     onAddOrder(newSO);
-    console.log("onaddorder ok");
     setModel("");
     setProblem("");
     setCid(0);

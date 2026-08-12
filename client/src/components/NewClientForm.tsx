@@ -18,7 +18,6 @@ export const NewClientForm=({ onCreateClient }: NewClientFormProps) =>{
        email:email,
      }
      onCreateClient(newC);
-     console.log("addclient ok");
      setName("");
      setPhone("");
      setEmail("");

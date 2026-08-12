@@ -1,5 +1,4 @@
-import type { User } from '../../generated/prisma/client' // ajuste para o seu path
-
+import type { User } from '../../generated/prisma/client'
 declare global {
   namespace NodeJS {
     interface ProcessEnv {
