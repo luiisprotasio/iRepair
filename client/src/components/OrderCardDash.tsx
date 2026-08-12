@@ -1,4 +1,5 @@
     import "../App.css";
+import { localDate } from "../services/dateAdapter";
     import type { ServiceOrder, ServiceOrderStatus } from "../types/serviceOrders";
     interface OrderCardProps{
         order: ServiceOrder;
@@ -25,12 +26,12 @@
 
     <div className={`border ${order.status =='open'? "border-[#360303]" : order.status == 'in_progress'?"border-yellow-500":"border-[#142e0d]"} border-2 rounded-lg text-white text-sm h-18/100 overflow-x-auto overflow-y-auto`}>
         <h2>Criado em:</h2>
-        <h4 id="cardTime">{order.createdAt}
+        <h4 id="cardTime">{localDate(order.createdAt)}
   </h4>
     </div>
 
     <div  className="flex-col text-white gap-1"> 
-        <h4>Status: {order.status}</h4>
+        <h4>Status:</h4>
         <select onChange={(e)=>{
             const newStatus=e.target.value as ServiceOrderStatus
             onChangeStatus(order.id, newStatus)}}  className="bg-white text-black">
