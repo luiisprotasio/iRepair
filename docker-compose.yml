@@ -25,14 +25,19 @@ services:
     environment:
       DATABASE_URL: mysql://root:${MYSQL_ROOT_PASSWORD}@db:3306/${MYSQL_DATABASE}
       JWT_SECRET: ${JWT_SECRET}
+      JWT_EXPIRES_IN: ${JWT_EXPIRES_IN}
+      JWT_REFRESH_SECRET: ${JWT_REFRESH_SECRET}
+      JWT_REFRESH_EXPIRES_IN: ${JWT_REFRESH_EXPIRES_IN}
       PORT: 3000
     ports:
-      - "3000:3000"
+      - "3000:1412"
     command: sh -c "npx prisma migrate deploy && node dist/src/server.js"
   client:
     build:
       context: ./client
       dockerfile: Dockerfile
+      args:  
+        VITE_API_URL: http://localhost:3000
     restart: unless-stopped
     depends_on:
       - api
