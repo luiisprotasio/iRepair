@@ -1,0 +1,14 @@
+import {Outlet} from 'react-router';
+import { Header } from './Header';
+export const Layout=()=>{
+return (
+    <div className="bg-radial from-[#133036] to-[#0a181b] min-h-screen">
+              <Header />
+              <main>
+                <Outlet />
+              </main>
+            </div>
+);
+
+
+}
