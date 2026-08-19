@@ -1,4 +1,5 @@
 import { Link } from "react-router";
+import logo from '../assets/logo.png'
 
 interface LoginFormProps {
 onSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
@@ -12,7 +13,7 @@ loading: boolean;
 export const LoginForm = ({ onSubmit, onEmailChange, onPasswordChange, email, password, error, loading }: LoginFormProps) => {
     return (
         <div className="flex-col justify-center align-center border-2 border-[#3a5d65] rounded-3xl  w-100 h-100">
-            <div className="p-3 flex justify-start rounded-4xl w-38"><img src="/src/assets/logo.png" alt="Logo" className="w-5 h-8.55 mr-4 ml-2"/>
+            <div className="p-3 flex justify-start rounded-4xl w-38"><img src={logo} alt="Logo" className="w-5 h-8.55 mr-4 ml-2"/>
             <h1 className="text-2xl text-transparent bg-clip-text bg-linear-90 from-[#42C0DF] to-[#9dd5e2] font-bold">iRepair</h1>
             </div>
              <h1 className="text-3xl text-transparent bg-clip-text bg-linear-90 from-[#42C0DF] to-[#9dd5e2] font-bold text-center">Login</h1>
