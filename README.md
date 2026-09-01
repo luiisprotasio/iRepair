@@ -1,32 +1,35 @@
-# React + TypeScript + Vite
+# 🛠️ Sistema Gerenciador de Ordens de Serviço
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Uma aplicação web completa para gerenciamento de chamados e ordens de serviço (O.S.), com suporte a autenticação de usuários e controle de acessos.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🚀 Tecnologias Utilizadas
 
-## React Compiler
+**Backend & Banco de Dados:**
+* **Node.js** com **TypeScript**
+* **Express.js** (API RESTful)
+* **Prisma ORM**
+* **MySQL**
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+**Frontend:**
+* **React** (TypeScript)
 
-## Expanding the Oxlint configuration
+**Infraestrutura & Containerização:**
+* **Docker** & **Docker Compose**
 
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
+---
 
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
-```
+## 📋 Funcionalidades
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+- **Autenticação & Autorização:**
+  - Sistema de Login seguro.
+  - Autenticação baseada em tokens JWT.
+  - Níveis de permissão de usuário (ex: Administrador, Técnico, Cliente).
+- **Gerenciamento de Usuários:**
+  - Cadastro, edição, visualização e remoção de usuários.
+- **Gerenciamento de Ordens de Serviço:**
+  - Criação de novas ordens de serviço.
+  - Acompanhamento de status (ex: *Pendente*, *Em Andamento*, *Concluída*).
+  - Vinculação de técnicos e clientes às ordens de serviço.
+  - Histórico e detalhes de atendimentos.
